@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión Académica | Acceso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="login-layout">
+      <section class="welcome-panel">
+        <div class="brand-badge">Gestión Escolar</div>
+        <h1>Bienvenido al portal académico</h1>
+        <p>
+          Inicia sesión como <strong>Administrador</strong>,
+          <strong>Docente</strong> o <strong>Estudiante</strong> y continúa con la gestión de tu
+          jornada escolar.
+        </p>
+        <ul>
+          <li>Control de usuarios y matrículas</li>
+          <li>Registro de notas y asistencia</li>
+          <li>Consulta de información estudiantil</li>
+        </ul>
+      </section>
+
+      <section class="login-panel" aria-label="Panel de acceso">
+        <div class="role-tabs" role="tablist" aria-label="Seleccionar tipo de acceso">
+          <button class="role-tab active" data-role="admin" role="tab" aria-selected="true">
+            Admin
+          </button>
+          <button class="role-tab" data-role="docente" role="tab" aria-selected="false">
+            Docente
+          </button>
+          <button class="role-tab" data-role="estudiante" role="tab" aria-selected="false">
+            Estudiante
+          </button>
+        </div>
+
+        <form class="login-form" novalidate>
+          <h2 id="formTitle">Acceso Administrador</h2>
+          <p id="formDescription">Ingresa tus credenciales para administrar la plataforma.</p>
+
+          <label for="email">Correo institucional</label>
+          <input id="email" name="email" type="email" placeholder="usuario@colegio.edu" required />
+
+          <label for="password">Contraseña</label>
+          <input id="password" name="password" type="password" placeholder="••••••••" required />
+
+          <button type="submit" class="submit-btn">Ingresar</button>
+          <p class="helper-text">¿Olvidaste tu contraseña? Contacta a soporte académico.</p>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
