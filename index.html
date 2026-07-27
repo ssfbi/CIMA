@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIMA — Alta costura para el alto rendimiento</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #EEEEE7;
+    --bg-panel:  #E3E1D5;
+    --card:      #F7F6F0;
+    --ink:       #1B1D17;
+    --ink-soft:  #55584B;
+    --gold:      #97733A;
+    --gold-soft: #B79A63;
+    --sport:     #2C3C31;
+    --line:      #C7BEA2;
+    --max: 1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  img, svg{display:block; max-width:100%;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 clamp(20px,5vw,64px);}
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.05;
+    letter-spacing:-.01em;
+  }
+
+  :focus-visible{outline:2px solid var(--gold); outline-offset:4px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,238,231,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.4rem;
+    letter-spacing:.06em;
+  }
+  .logo em{font-style:italic; font-weight:500; color:var(--gold);}
+  .nav-links{display:flex; align-items:center; gap:36px;}
+  .nav-links a{
+    font-size:.85rem;
+    letter-spacing:.03em;
+    color:var(--ink-soft);
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px;
+    background:var(--gold); transition:width .25s ease;
+  }
+  .nav-links a:hover::after, .nav-links a:focus-visible::after{width:100%;}
+  .btn-wa{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--sport); color:#EFEDE2;
+    padding:10px 18px; border-radius:999px;
+    font-size:.78rem; letter-spacing:.04em; font-weight:600;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn-wa:hover{background:var(--ink); transform:translateY(-1px);}
+  .btn-wa svg{width:14px; height:14px;}
+
+  @media (max-width:760px){ .nav-links a:not(.btn-wa){display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:clamp(64px,10vw,120px) 0 clamp(48px,8vw,90px);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.6rem);
+    max-width:11ch;
+  }
+  .hero h1 i{font-style:italic; font-weight:500; color:var(--gold);}
+  .hero p{
+    margin-top:24px; max-width:46ch;
+    color:var(--ink-soft); font-size:1.02rem;
+  }
+  .hero-cta{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--ink); color:var(--bg);
+    padding:14px 28px; border-radius:2px;
+    font-size:.82rem; letter-spacing:.05em; font-weight:600; text-transform:uppercase;
+    transition:background .2s ease, letter-spacing .2s ease;
+  }
+  .btn-primary:hover{background:var(--gold); letter-spacing:.08em;}
+  .btn-ghost{
+    border:1px solid var(--ink); padding:14px 28px; border-radius:2px;
+    font-size:.82rem; letter-spacing:.05em; font-weight:600; text-transform:uppercase;
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold);}
+
+  .mark{position:relative;}
+  .mark img{width:100%; height:auto;}
+
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr;}
+    .mark{order:-1; max-width:240px; margin:0 auto 12px;}
+  }
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{padding:clamp(64px,9vw,110px) 0;}
+  .panel{background:var(--bg-panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem); margin-top:10px;}
+  .section-head p{color:var(--ink-soft); margin-top:14px; max-width:52ch;}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+
+  /* ---------- PHILOSOPHY ---------- */
+  .phil-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
+  .phil-grid p{color:var(--ink-soft); margin-top:18px; max-width:48ch;}
+  .feature-list{margin-top:32px; display:flex; flex-direction:column; gap:20px;}
+  .feature-item{display:flex; gap:16px; align-items:flex-start;}
+  .feature-item .dot{
+    width:9px; height:9px; margin-top:7px; border-radius:50%;
+    background:var(--gold); flex-shrink:0;
+  }
+  .feature-item strong{font-family:'Fraunces', serif; font-weight:600; font-size:1.02rem;}
+  .feature-item span{display:block; color:var(--ink-soft); font-size:.92rem; margin-top:2px;}
+
+  .swatch{
+    aspect-ratio:4/5; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; background:
+      linear-gradient(135deg, var(--card) 0%, var(--bg-panel) 100%);
+  }
+  .swatch img{width:56%; height:auto;}
+  .swatch::before{
+    content:''; position:absolute; inset:14px; border:1px solid var(--gold-soft); opacity:.5;
+  }
+
+  @media (max-width:820px){ .phil-grid{grid-template-columns:1fr;} }
+
+  /* ---------- COLLECTION ---------- */
+  .grid-cards{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .card{
+    background:var(--card); padding:38px 28px; display:flex; flex-direction:column; gap:18px;
+    transition:background .25s ease;
+  }
+  .card:hover{background:var(--bg-panel);}
+  .card .glyph{width:44px; height:44px;}
+  .card h3{font-size:1.15rem; font-weight:600;}
+  .card p{color:var(--ink-soft); font-size:.88rem; flex-grow:1;}
+  .card a{
+    font-family:'JetBrains Mono', monospace; font-size:.72rem; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--sport); border-top:1px solid var(--line); padding-top:14px;
+  }
+  .card a:hover{color:var(--gold);}
+
+  @media (max-width:920px){ .grid-cards{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:540px){ .grid-cards{grid-template-columns:1fr;} }
+
+  /* ---------- STRIP / SIGNATURE ---------- */
+  .strip{
+    background:var(--sport); color:#EAE7D8; position:relative; overflow:hidden;
+  }
+  .strip .wrap{padding:clamp(56px,8vw,90px) clamp(20px,5vw,64px);}
+  .strip .lane-line{
+    position:absolute; left:-10%; top:50%; width:120%; height:1px;
+    background:var(--gold-soft); opacity:.5; transform:rotate(-4deg);
+  }
+  .strip blockquote{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.5rem,3.6vw,2.4rem); max-width:20ch; position:relative; z-index:1;
+  }
+  .strip cite{
+    display:block; margin-top:20px; font-style:normal; font-family:'JetBrains Mono', monospace;
+    font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-soft);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .contact-item{padding:22px 0; border-bottom:1px solid var(--line);}
+  .contact-item .eyebrow{display:block; margin-bottom:8px;}
+  .contact-item a, .contact-item span.val{
+    font-family:'Fraunces', serif; font-size:1.3rem; font-weight:500;
+  }
+  .contact-item a:hover{color:var(--gold);}
+
+  .qr-card{
+    background:var(--card); border:1px solid var(--line);
+    padding:32px; display:flex; flex-direction:column; align-items:center; gap:18px;
+    max-width:340px; margin-left:auto;
+  }
+  .qr-frame{
+    background:#fff; padding:14px; border:1px solid var(--gold-soft);
+  }
+  .qr-frame img{width:180px; height:180px; display:block;}
+  .qr-card p{text-align:center; font-size:.88rem; color:var(--ink-soft);}
+  .qr-card strong{display:block; font-family:'Fraunces', serif; font-size:1.05rem; color:var(--ink); margin-bottom:4px;}
+
+  @media (max-width:820px){
+    .contact-grid{grid-template-columns:1fr;}
+    .qr-card{margin:0 auto;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line); padding:40px 0;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  footer .logo{font-size:1.1rem;}
+  footer small{color:var(--ink-soft); font-size:.78rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">CIMA<em>.</em></div>
+    <div class="nav-links">
+      <a href="#coleccion">Colección</a>
+      <a href="#filosofia">Filosofía</a>
+      <a href="#contacto">Contáctenos</a>
+      <a class="btn-wa" href="https://wa.me/573124780176?text=Hola%2C%20quiero%20conocer%20mas%20sobre%20CIMA" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.86.5 3.6 1.37 5.1L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18a8 8 0 0 1-4.07-1.11l-.29-.17-3 .79.8-2.92-.19-.3A8 8 0 1 1 12 20z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Ropa deportiva de alto lujo</p>
+      <h1>Alta costura para el <i>alto rendimiento</i></h1>
+      <p>Prendas técnicas confeccionadas con la precisión de una casa de moda: tejidos de grado profesional, cortes anatómicos y terminaciones hechas a mano, pensadas para quien entrena — y viste — sin concesiones.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#coleccion">Ver la colección</a>
+        <a class="btn-ghost" href="#contacto">Contáctenos</a>
+      </div>
+    </div>
+    <div class="mark" aria-hidden="true">
+      <img src="images/hero-mark.png" alt="" width="480" height="300">
+    </div>
+  </div>
+</section>
+
+<section id="filosofia">
+  <div class="wrap phil-grid">
+    <div class="reveal">
+      <p class="eyebrow">Filosofía</p>
+      <h2>No es ropa deportiva.<br>Es una segunda piel.</h2>
+      <p>Cada colección de CIMA nace en el taller, no en la fábrica. Elegimos tejidos técnicos importados por su desempeño, no solo por su caída, y numeramos cada tiraje porque el lujo también es cuestión de escasez.</p>
+      <div class="feature-list">
+        <div class="feature-item">
+          <span class="dot"></span>
+          <div><strong>Tejidos de grado profesional</strong><span>Compresión, transpirabilidad y caída premium en cada fibra.</span></div>
+        </div>
+        <div class="feature-item">
+          <span class="dot"></span>
+          <div><strong>Confección artesanal</strong><span>Costuras revisadas a mano, pieza por pieza, antes de salir del taller.</span></div>
+        </div>
+        <div class="feature-item">
+          <span class="dot"></span>
+          <div><strong>Tirajes limitados</strong><span>Cantidades reducidas por temporada. Nada de producción masiva.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="swatch reveal" aria-hidden="true">
+      <img src="images/philosophy-illustration.png" alt="" width="140" height="140" style="width:56%;height:auto;">
+    </div>
+  </div>
+</section>
+
+<section id="coleccion" class="panel">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">La colección</p>
+      <h2>Cuatro líneas, un mismo estándar</h2>
+      <p>Cada línea responde a un momento distinto del entrenamiento — y del día. Escríbanos por WhatsApp para conocer disponibilidad, tallas y despachos.</p>
+    </div>
+    <div class="grid-cards reveal">
+      <div class="card">
+        <img class="glyph" src="images/glyph-running.png" alt="" width="44" height="44">
+        <h3>Running Couture</h3>
+        <p>Piezas de alto desempeño para correr: compresión anatómica y costuras planas.</p>
+        <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20Running%20Couture" target="_blank" rel="noopener">Consultar →</a>
+      </div>
+      <div class="card">
+        <img class="glyph" src="images/glyph-training.png" alt="" width="44" height="44">
+        <h3>Training Élite</h3>
+        <p>Conjuntos de entrenamiento diario con caída estructurada y libertad total de movimiento.</p>
+        <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20Training%20Elite" target="_blank" rel="noopener">Consultar →</a>
+      </div>
+      <div class="card">
+        <img class="glyph" src="images/glyph-outerwear.png" alt="" width="44" height="44">
+        <h3>Outerwear Alpina</h3>
+        <p>Chaquetas técnicas de exterior, aislantes y cortavientos, con acabados de sastrería.</p>
+        <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20Outerwear%20Alpina" target="_blank" rel="noopener">Consultar →</a>
+      </div>
+      <div class="card">
+        <img class="glyph" src="images/glyph-accesorios.png" alt="" width="44" height="44">
+        <h3>Accesorios CIMA</h3>
+        <p>Gorras, bolsos deportivos y complementos que cierran cada conjunto con sello propio.</p>
+        <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20Accesorios%20CIMA" target="_blank" rel="noopener">Consultar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="lane-line" aria-hidden="true"></div>
+  <div class="wrap reveal">
+    <blockquote>Entrenamos como se debe. Vestimos como se merece.</blockquote>
+    <cite>CIMA — Alto lujo deportivo</cite>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Contáctenos</p>
+      <h2>Hablemos de su próxima pieza</h2>
+      <p>Escríbanos por correo o por WhatsApp — con gusto le contamos sobre tallas, disponibilidad y envíos.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="contact-item">
+          <span class="eyebrow">Correo</span>
+          <a href="mailto:dayanaverdugobautista@gmail.com">dayanaverdugobautista@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="eyebrow">WhatsApp</span>
+          <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20conocer%20mas%20sobre%20CIMA" target="_blank" rel="noopener">+57 312 478 0176</a>
+        </div>
+        <div class="contact-item" style="border-bottom:none;">
+          <span class="eyebrow">Origen</span>
+          <span class="val">Colombia</span>
+        </div>
+      </div>
+      <div class="qr-card">
+        <strong>Escanéanos</strong>
+        <div class="qr-frame">
+          <img src="images/qr-whatsapp.png" alt="Código QR para escribir por WhatsApp al +57 312 478 0176" width="180" height="180" loading="lazy">
+        </div>
+        <p>Escanea con la cámara de tu celular para escribirnos directo por WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">CIMA<em>.</em></div>
+    <small>© 2026 CIMA — Ropa deportiva de alto lujo, Colombia</small>
+  </div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
