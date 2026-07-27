@@ -195,6 +195,56 @@
   @media (max-width:920px){ .grid-cards{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:540px){ .grid-cards{grid-template-columns:1fr;} }
 
+  /* ---------- PRODUCTOS ---------- */
+  .product-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:28px;
+  }
+  .product-card{
+    background:var(--card); border:1px solid var(--line);
+    display:flex; flex-direction:column; overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .product-card:hover{transform:translateY(-4px); box-shadow:0 14px 30px -18px rgba(27,29,23,.35);}
+  .product-photo{
+    aspect-ratio:1/1; position:relative;
+    background:linear-gradient(150deg, var(--card) 0%, var(--bg-panel) 100%);
+    display:flex; align-items:center; justify-content:center;
+    padding:18px;
+  }
+  .product-photo::before{
+    content:''; position:absolute; inset:12px; border:1px solid var(--gold-soft); opacity:.45;
+  }
+  .product-photo img{width:78%; height:78%; object-fit:contain; position:relative; z-index:1;}
+  .product-info{padding:22px 22px 24px; display:flex; flex-direction:column; gap:8px; flex-grow:1;}
+  .product-info .eyebrow{font-size:.66rem;}
+  .product-info h3{font-size:1.05rem; font-weight:600; margin-top:2px;}
+  .product-info p{color:var(--ink-soft); font-size:.85rem; flex-grow:1; margin-top:2px;}
+  .product-foot{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    margin-top:10px; padding-top:14px; border-top:1px solid var(--line);
+  }
+  .product-foot .price{
+    font-family:'JetBrains Mono', monospace; font-size:.66rem; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--ink-soft);
+  }
+  .product-foot a{
+    font-family:'JetBrains Mono', monospace; font-size:.7rem; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--sport); white-space:nowrap;
+  }
+  .product-foot a:hover{color:var(--gold);}
+  .product-note{
+    margin-top:36px; padding:16px 20px; border:1px dashed var(--line);
+    font-size:.82rem; color:var(--ink-soft); max-width:60ch;
+  }
+
+  .product-note code{
+    background:var(--bg-panel); padding:1px 6px; border-radius:2px;
+    font-family:'JetBrains Mono', monospace; font-size:.78em;
+  }
+
+  @media (max-width:980px){ .product-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:540px){ .product-grid{grid-template-columns:1fr;} }
+
   /* ---------- STRIP / SIGNATURE ---------- */
   .strip{
     background:var(--sport); color:#EAE7D8; position:relative; overflow:hidden;
@@ -253,6 +303,7 @@
     <div class="logo">CIMA<em>.</em></div>
     <div class="nav-links">
       <a href="#coleccion">Colección</a>
+      <a href="#productos">Productos</a>
       <a href="#filosofia">Filosofía</a>
       <a href="#contacto">Contáctenos</a>
       <a class="btn-wa" href="https://wa.me/573124780176?text=Hola%2C%20quiero%20conocer%20mas%20sobre%20CIMA" target="_blank" rel="noopener">
@@ -340,6 +391,124 @@
         <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20Accesorios%20CIMA" target="_blank" rel="noopener">Consultar →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="productos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Productos</p>
+      <h2>Piezas seleccionadas de la temporada</h2>
+      <p>Estas son fichas técnicas de referencia mientras se hace la sesión de fotos oficial. Escríbanos por WhatsApp para ver fotos reales, tallas disponibles y despacho.</p>
+    </div>
+    <div class="product-grid reveal">
+
+      <div class="product-card">
+        <div class="product-photo"><img src="images/product-legging-ascenso.png" alt="Legging Ascenso"></div>
+        <div class="product-info">
+          <span class="eyebrow">Running Couture</span>
+          <h3>Legging Ascenso</h3>
+          <p>Compresión anatómica con panel técnico transpirable en la pantorrilla.</p>
+          <div class="product-foot">
+            <span class="price">Precio a consultar</span>
+            <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20el%20Legging%20Ascenso" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-photo"><img src="images/product-top-cima-running.png" alt="Top CIMA Running"></div>
+        <div class="product-info">
+          <span class="eyebrow">Running Couture</span>
+          <h3>Top CIMA Running</h3>
+          <p>Corte entallado con costuras planas para cero rozadura en distancias largas.</p>
+          <div class="product-foot">
+            <span class="price">Precio a consultar</span>
+            <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20el%20Top%20CIMA%20Running" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-photo"><img src="images/product-chaqueta-vertice.png" alt="Conjunto Vértice"></div>
+        <div class="product-info">
+          <span class="eyebrow">Training Élite</span>
+          <h3>Conjunto Vértice</h3>
+          <p>Chaqueta ligera de cierre completo, ideal para el calentamiento y la vuelta a la calma.</p>
+          <div class="product-foot">
+            <span class="price">Precio a consultar</span>
+            <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20el%20Conjunto%20Vertice" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-photo"><img src="images/product-camiseta-sendero.png" alt="Camiseta Técnica Sendero"></div>
+        <div class="product-info">
+          <span class="eyebrow">Training Élite</span>
+          <h3>Camiseta Técnica Sendero</h3>
+          <p>Tejido de secado rápido con costuras raglán para libertad total de hombro.</p>
+          <div class="product-foot">
+            <span class="price">Precio a consultar</span>
+            <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20la%20Camiseta%20Sendero" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-photo"><img src="images/product-chaqueta-alpina.png" alt="Chaqueta Alpina"></div>
+        <div class="product-info">
+          <span class="eyebrow">Outerwear Alpina</span>
+          <h3>Chaqueta Alpina</h3>
+          <p>Aislante y cortavientos, con bolsillos técnicos sellados y acabados de sastrería.</p>
+          <div class="product-foot">
+            <span class="price">Precio a consultar</span>
+            <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20la%20Chaqueta%20Alpina" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-photo"><img src="images/product-cortavientos-glaciar.png" alt="Cortavientos Glaciar"></div>
+        <div class="product-info">
+          <span class="eyebrow">Outerwear Alpina</span>
+          <h3>Cortavientos Glaciar</h3>
+          <p>Capa exterior plegable con capucha y ajuste elástico al ruedo.</p>
+          <div class="product-foot">
+            <span class="price">Precio a consultar</span>
+            <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20el%20Cortavientos%20Glaciar" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-photo"><img src="images/product-gorra-cima.png" alt="Gorra CIMA"></div>
+        <div class="product-info">
+          <span class="eyebrow">Accesorios CIMA</span>
+          <h3>Gorra CIMA</h3>
+          <p>Gorra estructurada con visera curva y cierre trasero ajustable.</p>
+          <div class="product-foot">
+            <span class="price">Precio a consultar</span>
+            <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20la%20Gorra%20CIMA" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-photo"><img src="images/product-bolso-cumbre.png" alt="Bolso Cumbre"></div>
+        <div class="product-info">
+          <span class="eyebrow">Accesorios CIMA</span>
+          <h3>Bolso Cumbre</h3>
+          <p>Bolso deportivo de gran capacidad con compartimento independiente para calzado.</p>
+          <div class="product-foot">
+            <span class="price">Precio a consultar</span>
+            <a href="https://wa.me/573124780176?text=Hola%2C%20quiero%20informacion%20sobre%20el%20Bolso%20Cumbre" target="_blank" rel="noopener">Consultar →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="product-note reveal">Nota: estas imágenes son fichas técnicas ilustradas, no fotografías. Cuando tengan las fotos reales de cada prenda, se reemplazan los archivos en <code>images/</code> con el mismo nombre y quedan puestas automáticamente.</p>
   </div>
 </section>
 
